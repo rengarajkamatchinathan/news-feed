@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
 from bson import ObjectId
@@ -8,9 +9,18 @@ from typing import List
 # Initialize FastAPI app
 app = FastAPI()
 
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins, change to specific origins if needed
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 # MongoDB client setup (replace with your actual MongoDB URI)
 print("Connecting to MongoDB at mongodb://localhost:27017")
-client = MongoClient("mongodb://news-db:27017")
+client = MongoClient("mongodb://mongodb:27017")
 db = client["news_db"]  # Database name
 collection = db["news_articles"]  # Collection name
 

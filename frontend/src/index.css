@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-light-50 text-gray-900;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-lg border border-light-200 shadow-lg;
+  }
+  
+  .modern-gradient {
+    @apply bg-gradient-to-r from-primary-purple to-primary-blue bg-clip-text text-transparent animate-gradient;
+  }
+
+  .input-field {
+    @apply bg-light-100 border-light-200 text-gray-900 placeholder-gray-400 rounded-lg 
+           focus:ring-primary-blue focus:border-primary-blue transition-colors;
+  }
+}
